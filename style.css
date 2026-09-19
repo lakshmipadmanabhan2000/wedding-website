@@ -484,43 +484,30 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 720px) {
-  .timeline::before { left: 22px; }
+  /* keep the same zigzag structure as desktop, just scaled down —
+     spine and dot both already default to left:50%/top:50% above */
+  .timeline { padding: 0 0.25rem; }
   .timeline-item {
-    grid-template-columns: 1fr;
-    gap: 0;
-    padding-left: 3.2rem;
-    margin-bottom: 2.5rem;
-    text-align: left;
+    gap: 0.9rem;
+    margin-bottom: 2.4rem;
   }
-  .timeline-item:nth-child(even) .timeline-photo-wrap,
-  .timeline-item:nth-child(even) .timeline-copy {
-    grid-column: 1;
-    grid-row: auto;
-    text-align: left;
-  }
-  .timeline-dot { left: 22px; }
-
-  /* fuse photo + text into one "moment card" instead of two loose pieces */
   .timeline-photo-wrap {
-    max-width: none;
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    padding: 0;
-    border: none;
-    box-shadow: none;
-    border-radius: 16px 16px 0 0;
+    padding: 6px;
+    border-radius: 12px;
   }
   .timeline-photo,
-  .timeline-photo-empty { border-radius: 0; }
+  .timeline-photo-empty { border-radius: 8px; }
+  .timeline-dot { width: 13px; height: 13px; }
+  .timeline-item-final .timeline-dot { width: 16px; height: 16px; }
 
-  .timeline-copy {
-    background: var(--white);
-    border: 1px solid rgba(199, 154, 82, 0.25);
-    border-top: none;
-    border-radius: 0 0 16px 16px;
-    padding: 1rem 1.1rem 1.25rem;
-    box-shadow: 0 14px 28px rgba(61, 51, 42, 0.14);
-  }
+  .timeline-label { font-size: 0.62rem; letter-spacing: 0.1em; margin-bottom: 0.3rem; }
+  .timeline-text { font-size: 0.88rem; line-height: 1.5; }
+  .story-sign { font-size: 1.4rem; }
+}
+
+@media (max-width: 380px) {
+  .timeline-item { gap: 0.6rem; }
+  .timeline-text { font-size: 0.82rem; }
 }
 
 /* ---------- Dividers ---------- */

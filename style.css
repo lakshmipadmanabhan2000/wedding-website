@@ -185,7 +185,7 @@ img { max-width: 100%; display: block; }
   color: rgba(255, 255, 255, 0.94);
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
 }
-.hero.has-bg .hero-arch { color: rgba(255, 255, 255, 0.55); opacity: 0.8; }
+.hero.has-bg .hero-arch { display: none; }
 .hero.has-bg .scroll-hint { color: rgba(255, 255, 255, 0.9); }
 .hero.has-bg .countdown-box {
   background: rgba(255, 255, 255, 0.14);

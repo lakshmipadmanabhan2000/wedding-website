@@ -287,6 +287,8 @@ async function loadCategory(category) {
 (async function initHeroBackground() {
   const hero = document.getElementById("hero");
   const bg = document.getElementById("hero-bg");
+  const prevBtn = document.getElementById("hero-prev");
+  const nextBtn = document.getElementById("hero-next");
   const srcs = await loadCategory("save-the-date");
   if (srcs.length === 0) return; // keeps the plain cream hero as fallback
 
@@ -301,12 +303,35 @@ async function loadCategory(category) {
   hero.classList.add("has-bg");
 
   if (slides.length < 2) return;
+
   let index = 0;
-  setInterval(() => {
+  const show = (i) => {
     slides[index].classList.remove("active");
-    index = (index + 1) % slides.length;
+    index = (i + slides.length) % slides.length;
     slides[index].classList.add("active");
-  }, 6000);
+  };
+
+  let timer = null;
+  const restartAutoplay = () => {
+    clearInterval(timer);
+    timer = setInterval(() => show(index + 1), 6000);
+  };
+
+  prevBtn.hidden = false;
+  nextBtn.hidden = false;
+  prevBtn.addEventListener("click", () => { show(index - 1); restartAutoplay(); });
+  nextBtn.addEventListener("click", () => { show(index + 1); restartAutoplay(); });
+
+  let touchStartX = null;
+  hero.addEventListener("touchstart", (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  hero.addEventListener("touchend", (e) => {
+    if (touchStartX === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) { show(index + (dx < 0 ? 1 : -1)); restartAutoplay(); }
+    touchStartX = null;
+  });
+
+  restartAutoplay();
 })();
 
 /* ---------- Lightbox ---------- */

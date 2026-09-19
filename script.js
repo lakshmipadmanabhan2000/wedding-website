@@ -240,6 +240,30 @@ async function loadCategory(category) {
   });
 })();
 
+/* ---------- Story timeline photos ---------- */
+(async function initTimelinePhotos() {
+  const wraps = Array.from(document.querySelectorAll(".timeline-photo-wrap"));
+  const collected = [];
+  for (const wrap of wraps) {
+    const src = wrap.dataset.src;
+    const ok = await probeImage(src);
+    if (ok) {
+      const idx = collected.length;
+      collected.push(src);
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = wrap.dataset.alt || "";
+      img.loading = "lazy";
+      img.className = "timeline-photo";
+      img.addEventListener("click", () => openLightbox("timeline", idx));
+      wrap.appendChild(img);
+    } else {
+      wrap.innerHTML = '<div class="timeline-photo-empty" aria-hidden="true">&#129293;</div>';
+    }
+  }
+  categoryCache.timeline = collected;
+})();
+
 /* ---------- Save-the-date video ---------- */
 (async function initVideo() {
   const wrap = document.getElementById("video-wrap");

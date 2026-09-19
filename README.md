@@ -53,8 +53,18 @@ Our Story is already written in `index.html` with your real story. Still to do:
    Keep the file reasonably small (ideally under ~30MB) — GitHub Pages serves
    it as-is, so a huge file means a slow page for guests on mobile data.
 
-3. **`images/hero-placeholder.jpg`** — currently your caricature image, used
-   in the "Our Story" section. Replace with a couple photo if you'd prefer.
+3. **`images/gallery/timeline/`** — the "Our Story" section is a 5-stop
+   vertical timeline (How We Met → Started Dating → Growing Together →
+   Engaged → Forever), each stop with its own photo:
+   - `1.jpg` — How We Met (school photo)
+   - `2.jpg` — We Started Dating (your first photo together)
+   - `3.jpg` — Growing Together (temple photo)
+   - `4.jpg` — We Got Engaged (engagement photo)
+   - `5.jpg` — the closing "forever" line (optional)
+
+   Any missing number just shows a soft placeholder in that spot — no code
+   changes needed. `images/hero-placeholder.jpg` is no longer used and can
+   be deleted once you've added these.
 
 ## Greetings
 

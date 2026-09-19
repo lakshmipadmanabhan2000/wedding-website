@@ -15,7 +15,14 @@
   <div class="petals" aria-hidden="true"></div>
 
   <!-- ===== HERO ===== -->
-  <header class="hero">
+  <header class="hero" id="hero">
+    <!--
+      EDIT ME: the background photos here come from
+      images/gallery/save-the-date/ (1.jpg, 2.jpg, ...) and cross-fade
+      automatically. Add or swap files any time — no code changes needed.
+      With no photos present, the hero falls back to the plain cream design.
+    -->
+    <div class="hero-bg" id="hero-bg" aria-hidden="true"></div>
     <div class="hero-inner">
       <svg class="hero-arch" viewBox="0 0 300 380" aria-hidden="true">
         <path d="M10 380 V110 C10 50 70 10 150 10 C230 10 290 50 290 110 V380"
@@ -23,15 +30,6 @@
         <path d="M28 380 V112 C28 60 82 26 150 26 C218 26 272 60 272 112 V380"
               fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
       </svg>
-      <!--
-        EDIT ME: this spot shows your save-the-date photos, one at a time,
-        auto-advancing with swipe/arrow controls. Reads
-        images/gallery/save-the-date/ (1.jpg, 2.jpg, ...) — add more any
-        time and it picks them up automatically. Shows a placeholder until
-        at least one photo exists.
-      -->
-      <div class="hero-visual" id="hero-visual"></div>
-
       <p class="getting-married">We&rsquo;re Getting Married!</p>
       <h2 class="names">Aswin <span class="amp">weds</span> Lakshmi</h2>
       <p class="date-line">Sunday, 15th November 2026 &nbsp;&middot;&nbsp; 1202 Thulam 29</p>

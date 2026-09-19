@@ -232,16 +232,30 @@ async function loadCategory(category) {
   }
 })();
 
-/* ---------- Hero save-the-date photo carousel ---------- */
-(async function initHeroVisual() {
-  const container = document.getElementById("hero-visual");
+/* ---------- Hero background slideshow (save-the-date photos) ---------- */
+(async function initHeroBackground() {
+  const hero = document.getElementById("hero");
+  const bg = document.getElementById("hero-bg");
   const srcs = await loadCategory("save-the-date");
-  buildCarousel(container, srcs, {
-    altPrefix: "Save the date",
-    emptyText: "Save-the-date photos coming soon",
-    onSlideClick: (idx) => openLightbox("save-the-date", idx),
-    interval: 5000,
+  if (srcs.length === 0) return; // keeps the plain cream hero as fallback
+
+  const slides = srcs.map((src, i) => {
+    const img = new Image();
+    img.src = src;
+    img.alt = "";
+    img.className = i === 0 ? "active" : "";
+    bg.appendChild(img);
+    return img;
   });
+  hero.classList.add("has-bg");
+
+  if (slides.length < 2) return;
+  let index = 0;
+  setInterval(() => {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+  }, 6000);
 })();
 
 /* ---------- Lightbox ---------- */

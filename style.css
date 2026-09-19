@@ -494,6 +494,7 @@ img { max-width: 100%; display: block; }
   .timeline-item:nth-child(even) .timeline-photo-wrap,
   .timeline-item:nth-child(even) .timeline-copy {
     grid-column: 1;
+    grid-row: auto;
     text-align: left;
   }
   .timeline-photo-wrap { max-width: 240px; margin-bottom: 1.1rem; }

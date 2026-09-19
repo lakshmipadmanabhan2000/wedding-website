@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lakshmi &amp; Aswin | 15.11.2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Parisienne&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- decorative petals canvas -->
+  <div class="petals" aria-hidden="true"></div>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <div class="hero-inner">
+      <svg class="hero-arch" viewBox="0 0 300 380" aria-hidden="true">
+        <path d="M10 380 V110 C10 50 70 10 150 10 C230 10 290 50 290 110 V380"
+              fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M28 380 V112 C28 60 82 26 150 26 C218 26 272 60 272 112 V380"
+              fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+      </svg>
+      <!--
+        EDIT ME: this spot shows your save-the-date photos, one at a time,
+        auto-advancing with swipe/arrow controls. Reads
+        images/gallery/save-the-date/ (1.jpg, 2.jpg, ...) — add more any
+        time and it picks them up automatically. Shows a placeholder until
+        at least one photo exists.
+      -->
+      <div class="hero-visual" id="hero-visual"></div>
+
+      <p class="getting-married">We&rsquo;re Getting Married!</p>
+      <h2 class="names">Aswin <span class="amp">weds</span> Lakshmi</h2>
+      <p class="date-line">Sunday, 15th November 2026 &nbsp;&middot;&nbsp; 1202 Thulam 29</p>
+      <p class="venue-line">RDR Convention Centre, Edapazhanji, Thiruvananthapuram</p>
+
+      <div class="countdown" id="countdown">
+        <div class="countdown-box"><span id="cd-days">00</span><small>Days</small></div>
+        <div class="countdown-box"><span id="cd-hours">00</span><small>Hours</small></div>
+        <div class="countdown-box"><span id="cd-mins">00</span><small>Mins</small></div>
+        <div class="countdown-box"><span id="cd-secs">00</span><small>Secs</small></div>
+      </div>
+
+      <a href="#rsvp" class="btn btn-primary">Send Your Greetings</a>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">&darr;</div>
+  </header>
+
+  <!-- ===== SAVE THE DATE VIDEO ===== -->
+  <!--
+    EDIT ME: drop your video in as assets/save-the-date.mp4 (and optionally
+    a cover frame as assets/save-the-date-poster.jpg). Until the file exists
+    this shows a "coming soon" placeholder — no code changes needed.
+  -->
+  <section class="section video-section reveal">
+    <p class="section-eyebrow">Save The Date</p>
+    <h2 class="section-title">Our Save-the-Date Video</h2>
+    <div class="video-wrap" id="video-wrap"></div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 120 24"><path d="M0 12 H45 M75 12 H120" stroke="currentColor" stroke-width="1"/><circle cx="60" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="60" cy="12" r="1.5" fill="currentColor"/></svg>
+  </div>
+
+  <!-- ===== OUR STORY ===== -->
+  <section class="section story reveal">
+    <p class="section-eyebrow">Our Story</p>
+    <h2 class="section-title">A Little About Us</h2>
+    <div class="story-grid">
+      <div class="story-photo-wrap">
+        <img class="story-photo" src="images/hero-placeholder.jpg" alt="Aswin and Lakshmi">
+      </div>
+      <div class="story-copy">
+        <span class="quote-mark" aria-hidden="true">&#8220;</span>
+        <p class="story-text">
+          Our story began at school, where we first met, grew up in the same school,
+          and became good friends along the way.
+        </p>
+        <p class="story-text">
+          As we grew older, we mutually decided to give us a chance and started dating.
+          Over time, it just felt right.
+        </p>
+        <p class="story-text">
+          What started as a beautiful friendship slowly grew into a love we knew we
+          wanted to build our lives around. With the love and blessings of our families,
+          we took the next step and got engaged.
+        </p>
+        <p class="story-sign">And now, we're ready to begin our forever.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 120 24"><path d="M0 12 H45 M75 12 H120" stroke="currentColor" stroke-width="1"/><circle cx="60" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="60" cy="12" r="1.5" fill="currentColor"/></svg>
+  </div>
+
+  <!-- ===== FAMILIES ===== -->
+  <section class="section families reveal">
+    <p class="section-eyebrow">With Blessings From</p>
+    <h2 class="section-title">Our Families</h2>
+    <div class="families-grid">
+      <div class="family-card">
+        <h3>The Bride</h3>
+        <p class="family-name">Lakshmi P</p>
+        <p class="family-desc">Daughter of<br>Smt. Lokha Padmanabhan &amp; Shri. Padmanabhan P</p>
+      </div>
+      <div class="family-divider" aria-hidden="true"></div>
+      <div class="family-card">
+        <h3>The Groom</h3>
+        <p class="family-name">Aswin A</p>
+        <p class="family-desc">Son of<br>Smt. Sreekala L &amp; Shri. Anilkumar K R</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EVENT DETAILS ===== -->
+  <section class="section event reveal">
+    <p class="section-eyebrow">Save The Date</p>
+    <h2 class="section-title">Event Details</h2>
+
+    <div class="event-groups">
+      <div class="event-group group-wedding">
+        <div class="event-group-icon icon-gold">🪔</div>
+        <h3>The Wedding</h3>
+        <p class="event-date">Sunday, 15th November 2026</p>
+        <p class="muted">1202 Thulam 29</p>
+        <div class="event-line"></div>
+        <p><span class="event-label">Muhurtham</span>Between 11:43 AM &amp; 12:29 PM</p>
+        <p class="muted">Reception from 10:30 AM, same day</p>
+        <div class="event-line"></div>
+        <p><span class="event-label">Venue</span>RDR Convention Centre</p>
+        <p class="muted">Edapazhanji, Thiruvananthapuram</p>
+      </div>
+      <div class="event-group group-reception">
+        <div class="event-group-icon icon-rose">🎉</div>
+        <h3>The Reception</h3>
+        <p class="event-date">Monday, 16th November 2026</p>
+        <p class="muted">5:00 PM &ndash; 9:00 PM</p>
+        <div class="event-line"></div>
+        <p><span class="event-label">Venue</span>RDR Convention Centre</p>
+        <p class="muted">Edapazhanji, Thiruvananthapuram</p>
+      </div>
+    </div>
+
+    <div class="calendar-buttons">
+      <a class="btn btn-outline" id="google-cal-btn" target="_blank" rel="noopener">Add to Google Calendar</a>
+      <a class="btn btn-outline" id="invite-btn" href="assets/Aswin-Lakshmi-Wedding-Invitation.pdf" download="Aswin-Lakshmi-Wedding-Invitation.pdf">Download Invite Card</a>
+    </div>
+
+    <div class="map-wrap">
+      <iframe
+        title="RDR Convention Centre, Edapazhanji, Thiruvananthapuram"
+        src="https://www.google.com/maps?q=RDR+Convention+Centre,+Edapazhanji,+Thiruvananthapuram&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 120 24"><path d="M0 12 H45 M75 12 H120" stroke="currentColor" stroke-width="1"/><circle cx="60" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="60" cy="12" r="1.5" fill="currentColor"/></svg>
+  </div>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="section gallery reveal">
+    <p class="section-eyebrow">Moments</p>
+    <h2 class="section-title">Photo Gallery</h2>
+    <!--
+      EDIT ME: drop engagement photos into images/gallery/engagement/
+      named 1.jpg, 2.jpg, 3.jpg ... — shown one at a time (swipe/arrows,
+      auto-advancing). See README.md.
+    -->
+    <div class="gallery-carousel" id="gallery-carousel"></div>
+  </section>
+
+  <!-- lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous photo">&#8249;</button>
+    <img id="lightbox-img" src="" alt="">
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next photo">&#8250;</button>
+  </div>
+
+  <!-- ===== GREETINGS ===== -->
+  <section class="section rsvp reveal" id="rsvp">
+    <p class="section-eyebrow">We'd Love To Hear From You</p>
+    <h2 class="section-title">Send Your Greetings</h2>
+    <p class="rsvp-text">Can't wait to celebrate with you — leave us a message below!</p>
+
+    <form class="greet-form" id="greet-form">
+      <input type="text" id="g-name" placeholder="Your Name" required>
+      <textarea id="g-message" rows="4" placeholder="Your message for Aswin &amp; Lakshmi" required></textarea>
+      <button type="submit" class="btn btn-primary">Send Greetings</button>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <p class="monogram-small">A <span>&amp;</span> L</p>
+    <p>With love, Aswin &amp; Lakshmi</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

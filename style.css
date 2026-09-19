@@ -487,8 +487,9 @@ img { max-width: 100%; display: block; }
   .timeline::before { left: 22px; }
   .timeline-item {
     grid-template-columns: 1fr;
+    gap: 0;
     padding-left: 3.2rem;
-    margin-bottom: 2.75rem;
+    margin-bottom: 2.5rem;
     text-align: left;
   }
   .timeline-item:nth-child(even) .timeline-photo-wrap,
@@ -497,8 +498,29 @@ img { max-width: 100%; display: block; }
     grid-row: auto;
     text-align: left;
   }
-  .timeline-photo-wrap { max-width: 240px; margin-bottom: 1.1rem; }
-  .timeline-dot { top: 8px; left: 22px; transform: translate(-50%, 0); }
+  .timeline-dot { left: 22px; }
+
+  /* fuse photo + text into one "moment card" instead of two loose pieces */
+  .timeline-photo-wrap {
+    max-width: none;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    border-radius: 16px 16px 0 0;
+  }
+  .timeline-photo,
+  .timeline-photo-empty { border-radius: 0; }
+
+  .timeline-copy {
+    background: var(--white);
+    border: 1px solid rgba(199, 154, 82, 0.25);
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    padding: 1rem 1.1rem 1.25rem;
+    box-shadow: 0 14px 28px rgba(61, 51, 42, 0.14);
+  }
 }
 
 /* ---------- Dividers ---------- */

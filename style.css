@@ -535,6 +535,7 @@ img { max-width: 100%; display: block; }
   margin: 0 auto 1rem;
   color: var(--white);
 }
+.icon-kumbham { width: 27px; height: 30px; }
 .icon-gold { background: linear-gradient(135deg, var(--gold), var(--gold-deep)); }
 .icon-maroon { background: linear-gradient(135deg, var(--maroon), var(--maroon-deep)); }
 .icon-teal { background: linear-gradient(135deg, var(--teal), var(--teal-deep)); }
@@ -753,7 +754,16 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 600px) {
   .section { padding: 3.5rem 1.2rem; }
-  .countdown-box { min-width: 62px; padding: 0.7rem 0.4rem; }
+
+  /* keep all four units on one row — let them shrink rather than wrap */
+  .countdown { flex-wrap: nowrap; gap: 0.5rem; width: 100%; }
+  .countdown-box {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0.7rem 0.25rem;
+  }
+  .countdown-box span { font-size: 1.6rem; }
+  .countdown-box small { font-size: 0.58rem; letter-spacing: 0.06em; }
 
   /* keep "1202 Thulam 29" whole on its own line instead of breaking mid-phrase */
   .date-sep { display: none; }

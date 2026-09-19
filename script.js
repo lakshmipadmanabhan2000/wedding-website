@@ -44,9 +44,36 @@ const GALLERY_COUNT_TO_TRY = 24; // will silently skip any number that has no ma
         }
       });
     },
-    { threshold: 0.15 }
+    // threshold 0 so sections taller than the screen still trigger
+    { threshold: 0, rootMargin: "0px 0px -8% 0px" }
   );
   targets.forEach((el) => observer.observe(el));
+
+  // Safety net: anything at or above the fold gets shown outright. Without
+  // this, a section skipped by an anchor jump or a restored scroll position
+  // can stay stuck at opacity 0 and look like a blank page.
+  const sweep = () => {
+    targets.forEach((el) => {
+      if (el.getBoundingClientRect().top < window.innerHeight) {
+        el.classList.add("visible");
+        observer.unobserve(el);
+      }
+    });
+  };
+  let lastSweep = 0;
+  const sweepSoon = () => {
+    const now = Date.now();
+    if (now - lastSweep < 100) return;
+    lastSweep = now;
+    sweep();
+  };
+
+  sweep();
+  window.addEventListener("load", sweep);
+  window.addEventListener("pageshow", sweep);
+  window.addEventListener("scroll", sweepSoon, { passive: true });
+  window.addEventListener("resize", sweepSoon);
+  window.addEventListener("hashchange", sweepSoon);
 })();
 
 /* ---------- Countdown ---------- */

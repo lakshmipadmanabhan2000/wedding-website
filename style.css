@@ -483,7 +483,11 @@ img { max-width: 100%; display: block; }
   font-family: var(--serif);
   font-size: 1.8rem;
   margin-bottom: 0.6rem;
+  white-space: nowrap;
 }
+
+/* keeps a single person's name from splitting across two lines */
+.nb { white-space: nowrap; }
 .family-desc { color: var(--ink-soft); font-size: 0.95rem; }
 .family-divider {
   width: 1px;
@@ -750,4 +754,20 @@ img { max-width: 100%; display: block; }
 @media (max-width: 600px) {
   .section { padding: 3.5rem 1.2rem; }
   .countdown-box { min-width: 62px; padding: 0.7rem 0.4rem; }
+
+  /* keep "1202 Thulam 29" whole on its own line instead of breaking mid-phrase */
+  .date-sep { display: none; }
+  .date-alt { display: block; }
+
+  /* stack as Aswin / weds / Lakshmi */
+  .names .name-part,
+  .names .amp { display: block; margin: 0; }
+  .names { line-height: 1.15; }
+  .names .amp { font-size: 0.55em; margin: 0.1em 0; }
+
+  /* stack family cards at equal full width; the vertical rule only makes
+     sense side by side */
+  .families-grid { flex-direction: column; gap: 1.2rem; }
+  .family-divider { display: none; }
+  .family-card { width: 100%; min-width: 0; }
 }

@@ -27,7 +27,7 @@ Our Story is already written in `index.html` with your real story. Still to do:
 
 1. **Photos** — two folders, each shown one photo at a time (auto-advancing
    every ~4.5s, with arrows, dots and swipe; click to open full-screen):
-   - `images/gallery/save-the-date/` → 1.jpg, 2.jpg, 3.jpg, ... — shown at
+   - `images/gallery/save-the-date/` → 1.webp, 2.webp, 3.webp, ... — shown at
      the **top of the homepage**, where the "A & L" monogram used to be
    - `images/gallery/engagement/` → same pattern — shown in the
      **Photo Gallery** section
@@ -42,8 +42,8 @@ Our Story is already written in `index.html` with your real story. Still to do:
    mkdir -p resized
    for f in *.JPG; do sips -Z 1600 "$f" --out "resized/$f"; done
    ```
-   then copy your picks into the matching `images/gallery/<category>/` folder
-   as `1.jpg`, `2.jpg`, ...
+   Then convert your picks to WebP (using Preview or an image editor) and copy them into the matching
+   `images/gallery/<category>/` folder as `1.webp`, `2.webp`, ...
 
 2. **Save-the-date video** — drop it in as `assets/save-the-date.mp4`, with
    an optional cover frame at `assets/save-the-date-poster.jpg`. It plays in
@@ -56,14 +56,14 @@ Our Story is already written in `index.html` with your real story. Still to do:
 3. **`images/gallery/timeline/`** — the "Our Story" section is a 5-stop
    vertical timeline (How We Met → Started Dating → Growing Together →
    Engaged → Forever), each stop with its own photo:
-   - `1.jpg` — How We Met (school photo)
-   - `2.jpg` — We Started Dating (your first photo together)
-   - `3.jpg` — Growing Together (temple photo)
-   - `4.jpg` — We Got Engaged (engagement photo)
-   - `5.jpg` — the closing "forever" line (optional)
+   - `1.webp` — How We Met (school photo)
+   - `2.webp` — We Started Dating (your first photo together)
+   - `3.webp` — Growing Together (temple photo)
+   - `4.webp` — We Got Engaged (engagement photo)
+   - `5.webp` — the closing "forever" line (optional)
 
    Any missing number just shows a soft placeholder in that spot — no code
-   changes needed. `images/hero-placeholder.jpg` is no longer used and can
+   changes needed. `images/hero-placeholder.webp` is no longer used and can
    be deleted once you've added these.
 
 ## Greetings

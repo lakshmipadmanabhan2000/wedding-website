@@ -142,7 +142,8 @@ function buildCarousel(container, srcs, opts = {}) {
     const img = document.createElement("img");
     img.src = src;
     img.alt = `${opts.altPrefix || "Photo"} ${i + 1}`;
-    img.loading = "lazy";
+    img.loading = i === 0 ? "eager" : "lazy";
+    img.decoding = "async";
     img.className = "carousel-slide" + (i === 0 ? " active" : "");
     if (opts.onSlideClick) img.addEventListener("click", () => opts.onSlideClick(index));
     wrap.appendChild(img);
@@ -174,6 +175,7 @@ function buildCarousel(container, srcs, opts = {}) {
 
     const show = (i) => {
       index = (i + srcs.length) % srcs.length;
+      imgs[index].loading = "eager";
       imgs.forEach((im, k) => im.classList.toggle("active", k === index));
       dots.forEach((d, k) => d.classList.toggle("active", k === index));
     };
@@ -210,19 +212,18 @@ const galleryCarousel = document.getElementById("gallery-carousel");
 const categoryCache = {}; // category -> array of loaded src strings, in order
 
 function probeImage(src) {
-  return new Promise((resolve) => {
-    const img = new Image();
-    img.onload = () => resolve(src);
-    img.onerror = () => resolve(null);
-    img.src = src;
-  });
+  // A HEAD request confirms the file exists without downloading every gallery
+  // photo before the visitor reaches it.
+  return fetch(src, { method: "HEAD" })
+    .then((response) => (response.ok ? src : null))
+    .catch(() => null);
 }
 
 async function loadCategory(category) {
   if (categoryCache[category]) return categoryCache[category];
   const checks = [];
   for (let i = 1; i <= GALLERY_COUNT_TO_TRY; i++) {
-    checks.push(probeImage(`images/gallery/${category}/${i}.jpg`));
+    checks.push(probeImage(`images/gallery/${category}/${i}.webp`));
   }
   const results = (await Promise.all(checks)).filter(Boolean);
   categoryCache[category] = results;
@@ -254,6 +255,7 @@ async function loadCategory(category) {
       img.src = src;
       img.alt = wrap.dataset.alt || "";
       img.loading = "lazy";
+      img.decoding = "async";
       img.className = "timeline-photo";
       img.addEventListener("click", () => openLightbox("timeline", idx));
       wrap.appendChild(img);
@@ -294,8 +296,10 @@ async function loadCategory(category) {
 
   const slides = srcs.map((src, i) => {
     const img = new Image();
-    img.src = src;
+    img.dataset.src = src;
+    if (i === 0) img.src = src;
     img.alt = "";
+    img.decoding = "async";
     img.className = i === 0 ? "active" : "";
     bg.appendChild(img);
     return img;
@@ -305,11 +309,21 @@ async function loadCategory(category) {
   if (slides.length < 2) return;
 
   let index = 0;
+  const loadSlide = (i) => {
+    const slide = slides[(i + slides.length) % slides.length];
+    if (!slide.src) slide.src = slide.dataset.src;
+  };
   const show = (i) => {
+    loadSlide(i);
     slides[index].classList.remove("active");
     index = (i + slides.length) % slides.length;
     slides[index].classList.add("active");
+    // Warm the next image only after the current one is visible.
+    window.setTimeout(() => loadSlide(index + 1), 250);
   };
+
+  // Defer the second hero photo so the first screen paints as quickly as possible.
+  window.setTimeout(() => loadSlide(1), 1200);
 
   let timer = null;
   const restartAutoplay = () => {

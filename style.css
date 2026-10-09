@@ -610,6 +610,19 @@ img { max-width: 100%; display: block; }
 /* keeps a single person's name from splitting across two lines */
 .nb { white-space: nowrap; }
 .family-desc { color: var(--ink-soft); font-size: 0.95rem; }
+.siblings-love {
+  text-align: center;
+  color: var(--ink-soft);
+  margin: 2rem auto 0;
+  line-height: 1.8;
+}
+.siblings-heading {
+  display: block;
+  font-family: var(--script);
+  font-size: 1.65rem;
+  color: var(--gold-deep);
+}
+.siblings-names { font-size: 0.95rem; }
 .family-divider {
   width: 1px;
   background: linear-gradient(var(--rose-deep), var(--teal));

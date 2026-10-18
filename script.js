@@ -348,6 +348,26 @@ async function loadCategory(category) {
   restartAutoplay();
 })();
 
+/* ---------- Persistent scroll prompt ---------- */
+(function initScrollGuide() {
+  const guide = document.getElementById("scroll-guide");
+  const videoSection = document.querySelector(".video-section");
+  if (!guide) return;
+
+  const updateGuide = () => {
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const amount = maxScroll > 0 ? Math.min(1, window.scrollY / maxScroll) : 1;
+    guide.classList.toggle("is-hidden", amount >= 0.99);
+    const videoHasEntered = videoSection && videoSection.getBoundingClientRect().top < window.innerHeight;
+    guide.classList.toggle("is-over-hero", !videoHasEntered);
+  };
+
+  updateGuide();
+  window.addEventListener("scroll", updateGuide, { passive: true });
+  window.addEventListener("resize", updateGuide);
+  window.addEventListener("load", updateGuide);
+})();
+
 /* ---------- Lightbox ---------- */
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
